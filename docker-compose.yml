@@ -1,0 +1,39 @@
+version: '2'
+networks:
+  cbappsnet:
+    external: true
+
+services:
+  leave_postgres:
+    image: postgres:9.6.2-alpine
+    volumes:
+      - "../volumes/postgresql_leave:/var/lib/postgresql/data"
+      - "../volumes/postgresqlbackup_leave:/backup"
+    networks:
+      - cbappsnet
+    container_name: leave_postgres
+    restart: always
+    expose:
+      - "5432"
+    ports:
+      - "5433:5432"
+  user:
+    depends_on:
+      - leave_postgres
+    environment:
+      DB_NAME: leave_management_production
+    networks:
+      - cbappsnet
+    build:
+      context: .
+      dockerfile: Dockerfile.leave
+    container_name: leave
+    command: sh -c "bundle install;rm -r tmp;bundle exec rails s -b 0.0.0.0 -p 4000"
+    ports:
+      - "0.0.0.0:4000:4000"
+    volumes:
+      - ".:/leave"
+    links:
+      - leave_postgres
+    stdin_open: true
+    tty: true
