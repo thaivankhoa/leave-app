@@ -10,10 +10,11 @@ class SessionsController < ApplicationController
 
   def create
     request_params = {
-      email: params[:session][:username],
-      password: params[:session][:password]
+      email: params[:username],
+      password: params[:password]
     }
     response = Net::HTTP.post_form(URI.parse(GlobalConstants::AUTH_USER_URL), request_params)
+    debugger
     response = JSON.parse response.body
     if response["status"] == 'OK'
       log_in response["user"]["id"]
