@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
       password: params[:password]
     }
     response = Net::HTTP.post_form(URI.parse(GlobalConstants::AUTH_USER_URL), request_params)
-    debugger
     response = JSON.parse response.body
     if response["status"] == 'OK'
       log_in response["user"]["id"]
       set_user_name_into_session response["user"]["name"]
       set_roles_into_session response["user"]["roles"]
+      set_user_email_into_session response["user"]["email"]
       redirect_to root_url
     else
       flash.now[:danger] = 'Invalid Username/Password!'

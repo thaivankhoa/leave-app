@@ -11,9 +11,14 @@ module SessionsHelper
   def set_roles_into_session(roles)
     session[:roles] = roles
   end
+
+  def set_user_email_into_session(user_email)
+    session[:user_email] = user_email
+  end
+
   def current_user
     if session[:user_id]
-      @current_user ||= session[:user_name]
+      @current_user ||= session[:user_email]
     end
   end
 
