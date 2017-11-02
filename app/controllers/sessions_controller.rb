@@ -20,6 +20,11 @@ class SessionsController < ApplicationController
       set_user_name_into_session response["user"]["name"]
       set_roles_into_session response["user"]["roles"]
       set_user_email_into_session response["user"]["email"]
+
+      if User.where(user_code: session[:user_id]).first.nil?
+        User.create(name: session[:user_name], email: session[:user_email], role: session[:roles].first, user_code: session[:user_id])
+      end
+
       redirect_to root_url
     else
       flash.now[:danger] = 'Invalid Username/Password!'

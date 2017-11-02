@@ -18,9 +18,25 @@ module SessionsHelper
 
   def current_user
     if session[:user_id]
-      @current_user ||= session[:user_email]
+      @current_user ||= User.where(user_code: session[:user_id]).first
     end
   end
+
+  # def current_user_name
+  #   session[:user_name]
+  # end
+
+  def current_user_email
+    session[:user_email]
+  end
+
+  # def current_user_code
+  #   session[:user_id]
+  # end
+
+  # def current_user_role
+  #   session[:roles].first
+  # end
 
   def logged_in?
     !current_user.nil?
