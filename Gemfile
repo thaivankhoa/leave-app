@@ -18,6 +18,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'coffee-rails'
+gem 'bootstrap-sass'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

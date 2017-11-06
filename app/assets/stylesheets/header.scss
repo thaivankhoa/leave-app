@@ -1,0 +1,46 @@
+
+#header {
+  display: block;
+  background-color: #189eff;
+  height: auto;
+  a:hover {
+    background: transparent;
+    text-decoration: none;
+  }
+  .logo {
+    float: left;
+    position: relative;
+    h1 {
+      margin: 0px 10px 0px 0px;
+      text-align: center;
+      padding: 5px 10px;
+      background: #fbfbfb;
+      display: inline-block;
+      img {
+        height: 45px;
+        width: auto;
+      }
+    }
+    .company-name {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 25px;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  .login-control, .user-control {
+    float: right;
+    display: inline-block;
+  }
+
+  .login-control {
+    vertical-align: middle;
+  }
+}
+
+#header:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
