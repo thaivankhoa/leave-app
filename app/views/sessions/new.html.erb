@@ -4,21 +4,34 @@
   <% end %>
 </div>
 
-<%= form_tag do %>
-  <fieldset>
-    <legend>Please Log In</legend>
-    <div>
-      <%= label_tag :name, 'Name:'%>
-      <%= text_field_tag :username, params[:username]%>
-    </div>
+<div id="login-page">
+  <div class="logo-login">
+    <%= image_tag('codebox-full-logo.png') %>
+  </div>
 
-    <div>
-      <%= label_tag :password, 'Password:'%>
-      <%= password_field_tag :password, params[:password] %>
-    </div>
+  <div>
+    <h5 class="login-title">leave tracking system</h5>
+  </div>
+  <div class="login-form">
+    <%= form_tag do %>
+      <h4 class="login-form-title">Login</h5>
+      <table>
+        <tr>
+          <td><%= label_tag :name, 'User Name'%></td>
+          <td><%= text_field_tag :username, params[:username]%></td>
+        </tr>
+        <tr>
+          <td><%= label_tag :password, 'Password'%></td>
+          <td><%= password_field_tag :password, params[:password] %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= submit_tag "Login", class: "login-btn" %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
 
-    <div>
-      <%= submit_tag "Login"%>
-    </div>
-  </fieldset>
-<% end %>
+<script type="text/javascript">
+  $('#header').hide();
+</script>

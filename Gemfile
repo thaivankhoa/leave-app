@@ -19,6 +19,7 @@ gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'coffee-rails'
 gem 'bootstrap-sass'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

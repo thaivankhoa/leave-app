@@ -1,7 +1,9 @@
+//header
 
 #header {
+  padding: 10px 0px 15px 0px;
   display: block;
-  background-color: #189eff;
+  background-color: #3434a3;
   height: auto;
   a:hover {
     background: transparent;
@@ -21,21 +23,36 @@
         width: auto;
       }
     }
-    .company-name {
+    .app-title {
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       display: inline-block;
-      margin-left: 10px;
-      font-size: 25px;
+      font-size: 18px;
       font-weight: 600;
       color: #fff;
+      padding-top: 5px;
     }
   }
-  .login-control, .user-control {
-    float: right;
-    display: inline-block;
-  }
-
   .login-control {
-    vertical-align: middle;
+    float: right;
+    button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 0px;
+      img {
+        height: 30px;
+        margin-right: 10px;
+      }
+      .caret-icon {
+        font-size: 15px;
+        margin-left: 10px;
+      }
+      span {
+        display: inline-block;
+        top: 50%;
+      }
+    }
   }
 }
 
@@ -43,4 +60,20 @@
     content: " ";
     display: block;
     clear: both;
+}
+
+//navigation
+
+#nav-bar {
+  border-bottom: 1px solid #cccccc;
+  .title-tab {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    a:hover {
+      background: transparent;
+      text-decoration: none;
+      color: #6666ff;
+    }
+  }
 }
