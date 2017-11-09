@@ -11,7 +11,7 @@ gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -20,6 +20,9 @@ gem 'pg'
 gem 'coffee-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+
+gem "cocoon"
+gem 'jquery-ui-rails'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

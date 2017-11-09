@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-ui/widgets/datepicker
+//= require cocoon
+
 //= require_tree .
