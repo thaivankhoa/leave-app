@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reviewer:</strong>
+  <%= @request.reviewer %>
+</p>
+
+<p>
+  <strong>Ccer:</strong>
+  <%= @request.ccer %>
+</p>
+
+<p>
+  <strong>Request type:</strong>
+  <%= @request.request_type %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @request.reason %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @request.status %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

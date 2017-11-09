@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  # one user have many request
+  has_many :requests
+
   def update_wfh_days(wfh_duration)
     update_attribute(:wfh_day, self.wfh_day + wfh_duration)
   end

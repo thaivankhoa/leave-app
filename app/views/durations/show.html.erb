@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First date:</strong>
+  <%= @duration.first_date %>
+</p>
+
+<p>
+  <strong>Last date:</strong>
+  <%= @duration.last_date %>
+</p>
+
+<p>
+  <strong>Duration type:</strong>
+  <%= @duration.duration_type %>
+</p>
+
+<p>
+  <strong>Leave request:</strong>
+  <%= @duration.leave_request_id %>
+</p>
+
+<%= link_to 'Edit', edit_duration_path(@duration) %> |
+<%= link_to 'Back', durations_path %>
