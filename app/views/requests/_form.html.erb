@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= f.label :reviewer %>
-    <%= f.text_field :reviewer %>
+    <%= f.text_field :reviewer, class: "tag-box" %>
   </div>
 
   <div class="field">
     <%= f.label :ccer %>
-    <%= f.text_field :ccer %>
+    <%= f.text_field :ccer, class: "tag-box" %>
   </div>
 
   <div class="field">
     <%= f.label :request_type %>
-    <%= f.text_field :request_type %>
+    <%= f.select :request_type, ["Leave Request", "WFH Request"] %>
   </div>
 
   <div class="field">
@@ -31,9 +31,18 @@
     <%= f.text_area :reason %>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label :status %>
     <%= f.text_field :status %>
+  </div> -->
+  </br>
+  <h5>Leave Duration</h5>
+  <%= f.fields_for :durations, request.durations do |duration| %>
+    <%= render 'duration_fields', f: duration %>
+  <% end %>
+  </br>
+  <div class="links">
+    <%= link_to_add_association 'add date time', f, :durations %>
   </div>
 
   <div class="actions">

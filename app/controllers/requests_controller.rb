@@ -13,6 +13,8 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
     @request = Request.new
+
+    1.times { @duration = @request.durations.build }
   end
 
   # GET /requests/1/edit
@@ -24,6 +26,12 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
 
     if @request.save
+      reviewers = leave_request_params[:reviewer].split(", ")
+
+      reviewers.each do |reviewer|
+        @leave_request.reviewers << User.where(:name => reviewer).first
+      end
+
       redirect_to @request, notice: 'Request was successfully created.'
     else
       render :new
@@ -53,6 +61,6 @@ class RequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def request_params
-      params.require(:request).permit(:reviewer, :ccer, :request_type, :reason, :status)
+      params.require(:request).permit(:reviewer, :ccer, :request_type, :reason, :status, durations_attributes: [:first_date, :last_date, :duration_type, :leave_request_id, :_destroy])
     end
 end
