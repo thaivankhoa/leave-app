@@ -16,8 +16,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/navigation' %>
+
+    <% if current_user %>
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/navigation' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
