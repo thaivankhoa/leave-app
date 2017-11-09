@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # one user have many request
   has_many :requests
 
+  # -- review relationship -- one user have many pending request that need to review
+  has_many :permissions
+  has_many :pending_requests, :through => :permissions, :source => :request
+
   def update_wfh_days(wfh_duration)
     update_attribute(:wfh_day, self.wfh_day + wfh_duration)
   end

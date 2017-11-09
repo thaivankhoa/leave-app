@@ -53,6 +53,6 @@ class DurationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def duration_params
-      params.require(:duration).permit(:first_date, :last_date, :duration_type, :leave_request_id)
+      params.require(:duration).permit(:first_date, :last_date, :duration_type, :request_id)
     end
 end
