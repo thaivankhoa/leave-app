@@ -34,6 +34,12 @@ class RequestsController < ApplicationController
         @request.reviewers << User.where(:name => reviewer).first
       end
 
+      ccers = request_params[:ccer].split(", ")
+
+      ccers.each do |ccer|
+        @request.cc_users << User.where(:name => ccer).first
+      end
+
       redirect_to @request, notice: 'Request was successfully created.'
     else
       render :new
