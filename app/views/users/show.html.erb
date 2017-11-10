@@ -35,28 +35,28 @@
       </thead>
       <tbody>
       <% Request.all.each do |request| %>
-        <tr class="request-record">
-          <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
-          <td><%= request.request_type %></td>
-          <td><%= request.from_date.strftime("%b %d, %Y") %></td>
-          <td><%= request.to_date.strftime("%b %d, %Y") %></td>
-          <td><%= request.total_duration %> days</td>
-          <td><%= request.status %></td>
-          <td>
-            <% request.reviewers.each do |reviewer| %>
-              <% if reviewer == request.reviewers.last %>
-                <%= reviewer.name %>
-              <% else %>
-                <%= reviewer.name %>,
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            <% end %>
-          </td>
-        </tr>
+            <tr class="request-record" data-link="<%= request_path(request) %>" >
+              <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
+              <td><%= request.request_type %></td>
+              <td><%= request.from_date.strftime("%b %d, %Y") %></td>
+              <td><%= request.to_date.strftime("%b %d, %Y") %></td>
+              <td><%= request.total_duration %> days</td>
+              <td><%= request.status %></td>
+              <td>
+                <% request.reviewers.each do |reviewer| %>
+                  <% if reviewer == request.reviewers.last %>
+                    <%= reviewer.name %>
+                  <% else %>
+                    <%= reviewer.name %>,
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                <% end %>
+              </td>
+            </tr>
       <% end %>
       </tbody>
     </table>
@@ -64,3 +64,8 @@
 </div>
 
 
+<script type="text/javascript">
+  $('.request-record').click(function() {
+    window.location =  $(this).data("link")
+  })
+</script>
