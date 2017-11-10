@@ -76,4 +76,24 @@
       color: #6666ff;
     }
   }
+  .send-request {
+    margin: 10px 20px;
+    padding: 5px 20px;
+    float: right;
+    background: #31b0d5;
+    border: 1px solid #269abc;
+    border-radius: 5px;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+  .send-request:hover {
+    background: #269abc;
+    a {
+      text-decoration: none;
+      background: transparent;
+      color: white;
+    }
+  }
 }

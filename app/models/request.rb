@@ -15,6 +15,6 @@ class Request < ApplicationRecord
   accepts_nested_attributes_for :durations, allow_destroy: true
 
   def total_duration
-    self.durations.inject(0) { |sum, duration| sum + duration.total_duration}
+    durations.inject(0) { |sum, duration| sum + duration.total_duration}
   end
 end
