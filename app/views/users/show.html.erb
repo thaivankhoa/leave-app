@@ -41,7 +41,15 @@
               <td><%= request.from_date.strftime("%b %d, %Y") %></td>
               <td><%= request.to_date.strftime("%b %d, %Y") %></td>
               <td><%= request.total_duration %> days</td>
-              <td><%= request.status %></td>
+              <td class="request-status">
+                <% if request.status == "Pending" %>
+                  <span class="pending"><%= request.status %></span>
+                <% elsif request.status == "Approved" %>
+                   <span class="approved"><%= request.status %></span>
+                <% else %>
+                   <span class="denied"><%= request.status %></span>
+                <% end %>
+              </td>
               <td>
                 <% request.reviewers.each do |reviewer| %>
                   <% if reviewer == request.reviewers.last %>
@@ -51,7 +59,7 @@
                   <% end %>
                 <% end %>
               </td>
-              <td>
+              <td class="delete-request">
                 <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 <% end %>

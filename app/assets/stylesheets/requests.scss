@@ -1,3 +1,44 @@
 // Place all the styles related to the requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-board {
+  .request-record {
+    font-size: 20px;
+  }
+  tbody {
+    .request-record {
+      td {
+
+      }
+      .request-status {
+        color: white;
+        margin: 5px 0px;
+        font-size: 12px;
+        .pending, .approved, .denied {
+          padding: 5px 10px;
+          border-radius: 4px;
+        }
+        .pending {
+          background: #4d8bc0;
+        }
+        .approved {
+          background: #56a656;
+        }
+        .denied {
+          background: #d35956;
+        }
+      }
+      .delete-request {
+        a:hover {
+          background: transparent;
+          text-decoration: none;
+          color: #fc4349;
+        }
+      }
+    }
+    .request-record:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -23,12 +23,17 @@
 
   <div class="field">
     <%= f.label :request_type %>
-    <%= f.select :request_type, ["Leave Request", "WFH Request"] %>
+    <%= f.select :request_type, ["Leave", "WFH"] %>
   </div>
 
   <div class="field">
     <%= f.label :reason %>
     <%= f.text_area :reason %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.select :status, ["Pending", "Approved", "Denied"] %>
   </div>
 
   <!-- <div class="field">

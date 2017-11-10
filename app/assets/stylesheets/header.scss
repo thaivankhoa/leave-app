@@ -1,5 +1,6 @@
 //header
 
+
 #header {
   padding: 10px 0px 15px 0px;
   display: block;
@@ -65,6 +66,7 @@
 //navigation
 
 #nav-bar {
+  background: #e7e7e7;
   border-bottom: 1px solid #cccccc;
   .title-tab {
     display: inline-block;
@@ -80,8 +82,8 @@
     margin: 10px 20px;
     padding: 5px 20px;
     float: right;
-    background: #31b0d5;
-    border: 1px solid #269abc;
+    background: #4d8bc0;
+    border: 1px solid #1b6aae;
     border-radius: 5px;
     color: white;
     a {
@@ -89,7 +91,7 @@
     }
   }
   .send-request:hover {
-    background: #269abc;
+    background: #1b6aae;
     a {
       text-decoration: none;
       background: transparent;
