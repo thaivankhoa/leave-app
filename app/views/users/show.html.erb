@@ -1,29 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="container-z">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <div class="year"><%= Time.current.year %></div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <div class="leave-info">
+    <div class="leave-info-tab leave-balance">
+      <div class="title">LEAVE DAYS</div>
+      <div class="info"><span><%= current_user.taken %>/<%= current_user.carried%></span> DAYS</div>
+    </div>
+    <div class="leave-info-tab wfh-days">
+      <div class="title">WFH DAYS</div>
+      <div class="info"><span><%= current_user.wfh_day %></span> DAYS</div>
+    </div>
+  </div>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <div class="user-leave-board">
+    <div class="board-title">
+      your leave / wfh report
+    </div>
 
-<p>
-  <strong>User code:</strong>
-  <%= @user.user_code %>
-</p>
+    <table class="table table-striped main-board">
+      <thead>
+        <tr>
+          <th scope="col">Request Date</th>
+          <th scope="col">Type</th>
+          <th scope="col">From Date</th>
+          <th scope="col">To Date</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Status</th>
+          <th scope="col">Reviewer</th>
+          <th scope="col">#</th>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @user.balance %>
-</p>
+        </tr>
+      </thead>
+      <tbody>
+      <% Request.all.each do |request| %>
+        <tr>
+          <td><%= request.created_at %></td>
+          <td><%= request.request_type %></td>
+          <td><%= request.from_date %></td>
+          <td><%= request.to_date %></td>
+          <td><%= request.total_duration %></td>
+          <td><%= request.status %></td>
+          <td>
+            <% request.reviewers.each do |reviewer| %>
+              <% if reviewer == request.reviewers.last %>
+                <%= reviewer.name %>
+              <% else %>
+                <%= reviewer.name %>,
+              <% end %>
+            <% end %>
+          </td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+

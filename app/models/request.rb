@@ -17,4 +17,20 @@ class Request < ApplicationRecord
   def total_duration
     durations.inject(0) { |sum, duration| sum + duration.total_duration}
   end
+
+  def from_date
+    first_date_arr = []
+    self.durations.each do |duration|
+      first_date_arr.push(duration.first_date)
+    end
+    first_date_arr.min
+  end
+
+  def to_date
+    last_date_arr = []
+    self.durations.each do |duration|
+      last_date_arr.push(duration.last_date)
+    end
+    last_date_arr.max
+  end
 end
