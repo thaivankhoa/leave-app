@@ -1,21 +1,17 @@
-<fieldset class="nested-fields">
-  <div class="field">
-    <td><%= f.label :first_date %></td>
-    <td><%= f.text_field :first_date, class: "gui-input request_date_picker" %></td>
-  </div>
-  <div class="field">
-    <td><%= f.label :last_date %></td>
-    <td><%= f.text_field :last_date, class: "gui-input request_date_picker" %></td>
-  </div>
-  <div class="field">
-    <% duration_type = ['Morning','Afternoon','All day'] %>
-    <fieldset>
-      <% duration_type.each do |duration| %>
-        <%= f.radio_button :duration_type, duration, checked: "checked" %>
-        <label style="display: inline-block;" for="<% duration %>"><%= duration %></label>
-      <% end %>
-    </fieldset>
-  </div>
-  <%= f.check_box :_destroy %>
+
+<div class="nested-fields">
+  <%= f.label :first_date %>
+  <%= f.text_field :first_date, class: "gui-input request_date_picker" %>
+
+  <%= f.label :last_date %></td>
+  <%= f.text_field :last_date, class: "gui-input request_date_picker" %>
+
+  <% duration_type = ['Morning','Afternoon','All day'] %>
+  <% duration_type.each do |duration| %>
+    <%= f.radio_button :duration_type, duration, checked: "checked" %>
+    <label style="display: inline-block;" for="<% duration %>"><%= duration %></label>
+  <% end %>
+
   <%= link_to_remove_association "remove date time", f %>
-</fieldset>
+</div>
+

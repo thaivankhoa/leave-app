@@ -42,3 +42,49 @@
     }
   }
 }
+
+.new-request-form {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10;
+  background: rgba(0,0,0,0.7);
+  #new-request {
+    position: absolute;
+    z-index: 100;
+    #new_request {
+      background: white;
+      overflow: auto;
+      text-align: center;
+      width: 100%;
+      margin: auto;
+      padding: 20px;
+      .title {
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .reviewer-cc {
+        border-collapse:separate;
+        border-spacing:1em;
+        border-bottom: 1px solid #cccccc;
+        .reviewer-cc-form {
+          margin-bottom: 15px;
+          .form-input {
+            padding-right: 10px;
+            input {
+              border: 1px solid #999999;
+              border-radius: 4px;
+              padding: 5px 15px;
+              background: #fff;
+            }
+          }
+          .form-label {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

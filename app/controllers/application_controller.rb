@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
   include ApplicationHelper
+  include ActionController::MimeResponds
 
   def require_login
     unless current_user

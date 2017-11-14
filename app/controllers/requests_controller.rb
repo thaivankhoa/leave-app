@@ -8,6 +8,10 @@ class RequestsController < ApplicationController
 
   # GET /requests/1
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /requests/new
@@ -15,6 +19,11 @@ class RequestsController < ApplicationController
     @request = Request.new
 
     1.times { @duration = @request.durations.build }
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /requests/1/edit
@@ -40,7 +49,7 @@ class RequestsController < ApplicationController
         @request.cc_users << User.where(:name => ccer).first
       end
 
-      redirect_to @request, notice: 'Request was successfully created.'
+      redirect_to user_path(current_user), notice: 'Request was successfully created.'
     else
       render :new
     end
@@ -58,7 +67,7 @@ class RequestsController < ApplicationController
   # DELETE /requests/1
   def destroy
     @request.destroy
-    redirect_to requests_url, notice: 'Request was successfully destroyed.'
+    redirect_to user_path(current_user), notice: 'Request was successfully destroyed.'
   end
 
   private
