@@ -7,6 +7,10 @@ body {
   color: #333;
 }
 
+body, html {
+  height: 100% !important;
+}
+
 .container-z {
     width: 90%;
     margin: auto;

@@ -12,41 +12,59 @@
       </div>
     <% end %>
 
-    <div class="title">SEND A REQUEST<span id="close-request-form">X</span></div>
-    <div class="reviewer-cc">
-    	<div class="reviewer-cc-form">
-    		<div class="request-form-label"><%= f.label "To" %></div>
-    		<div class="request-form-input"><%= f.text_field :reviewer, class: "tag-box" %></div>
-    	</div>
-    	<div class="reviewer-cc-form">
-    		<div class="request-form-label"><%= f.label "CC" %></div>
-    		<div class="request-form-input"><%= f.text_field :ccer, class: "tag-box" %></div>
-    	</div>
-    	
-    </div>
-    <div class="request-type">
-    	<div class="request-form-label"><%= f.label :request_type %></div>
-    	<div class="request-form-select"><%= f.select :request_type, ["Leave", "WFH"] %></div>
-    </div>
-    <div class="duration-form">
-    	<div class="request-form-label" id="duration-form-label"><%= f.label "Date time" %></div>
-    	<div class="request-duration-single-form">
-    		<%= f.fields_for :durations, request.durations do |duration| %>
-    		  <%= render 'duration_fields', f: duration %>
-    		<% end %>
-    		<div class="request-duration-single-form">
-    			<%= link_to_add_association 'Add another date', f, :durations, class: "add" %>
-    		</div>
-    	</div>
-    </div>
+    <div class="title">SEND A REQUEST <span>X</span></div>
+    <table class="reviewer-cc">
+      <tr class="reviewer-cc-form">
+        <td class="form-label"><%= f.label "To" %></td>
+        <td class="form-input"><%= f.text_field :reviewer, class: "tag-box" %></td>
+      </tr>
+      <tr class="reviewer-cc-form">
+        <td class="form-label"><%= f.label "CC" %></td>
+        <td class="form-input"><%= f.text_field :ccer, class: "tag-box" %></td>
+      </tr>
+    </table>
 
+    <table class="request-info-group">
+      <tr class="request-info">
+        <td class="info-label"><%= f.label :request_type %></td>
+        <td class="info-input"><%= f.select :request_type, ["Leave", "WFH"] %></td>
+      </tr>
+    <table class="request-info-group">
+      <tr class="request-info">
+        <td class="info-label"><%= f.label "Date Time" %></td>
+        <td class="date-time-input">
+            <%= f.fields_for :durations, request.durations do |duration| %>
+              <%= render 'duration_fields', f: duration %>
+            <% end %>
+        </td>
+      </tr>
 
+      <tr class="request-info">
+        <td class="info-label"></td>
+        <td class="info-input">
+          <div class="links">
+            <%= link_to_add_association 'add date time', f, :durations %>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr class="request-info">
+        <td class="info-label"><%= f.label :reason %></td>
+        <td class="info-input"><%= f.text_area :reason %></td>
+      </tr>
+    </table>
 
 <!--     <div class="field">
       <%#= f.label :status %>
       <%#= f.select :status, ["Pending", "Approved", "Denied"] %>
     </div> -->
 
+    <!-- <div class="field">
+      <%= f.label :status %>
+      <%= f.text_field :status %>
+    </div> -->
     </br>
 
 
@@ -57,9 +75,6 @@
 </div>
 
 <script type="text/javascript">
-  $('#close-request-form').on('click', function(){
-  	$('.new-request-form').hide();
-  });
   $( function() {
       var availableTags =
         <%= raw User.select(:name).map(&:name) %>;

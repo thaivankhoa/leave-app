@@ -47,42 +47,163 @@
   display: none;
   width: 100%;
   height: 100%;
-  position: fixed;
+  position: absolute;
   z-index: 10;
-  background: rgba(0,0,0,0.7);
   #new-request {
     position: absolute;
     z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    padding: 10% 0px;
+    overflow: overlay;
     #new_request {
       background: white;
       overflow: auto;
-      text-align: center;
-      width: 100%;
+      width: 60%;
+      height: auto;
       margin: auto;
-      padding: 20px;
+      padding: 5px 20px 20px 20px;
+      font-size: 14px;
       .title {
         text-align: left;
         font-weight: bold;
         margin-bottom: 10px;
+        font-size: 16px;
+        span {
+          float: right;
+        }
+        span:hover {
+          cursor: pointer;
+        }
       }
       .reviewer-cc {
-        border-collapse:separate;
-        border-spacing:1em;
+        margin-top: 30px;
+        overflow: hidden;
         border-bottom: 1px solid #cccccc;
         .reviewer-cc-form {
-          margin-bottom: 15px;
-          .form-input {
+          margin-bottom: 20px;
+          .request-form-label, .request-form-input {
+            display: inline-block;
+          }
+          .request-form-label {
+            text-align: right;
             padding-right: 10px;
+            width: 20%;
+          }
+          .request-form-input {
+            width: 79%;
+            padding-right: 40px;
             input {
+              width: 100%;
               border: 1px solid #999999;
               border-radius: 4px;
               padding: 5px 15px;
               background: #fff;
             }
           }
-          .form-label {
-            font-size: 13px;
+        }
+      }
+      .request-type {
+        padding: 15px 0px 0px 0px;
+        .request-form-label, .request-form-select {
+          display: inline-block;
+        }
+        .request-form-label {
+          text-align: right;
+          padding-right: 10px;
+          width: 20%;
+        }
+        .request-form-select {
+          width: 20%;
+          select {
+            width: 100%;
+            border: 2px solid #dbdbdb;
+            border-radius: 4px;
+            padding: 5px 15px;
+            background: #fff;
           }
+        }
+      }
+      .duration-form {
+        #duration-form-label {
+          vertical-align: top;
+          padding-top: 25px;
+        }
+        .add:hover {
+          background: transparent;
+          text-decoration: none;
+          color: red;
+        }
+        .request-form-label, .request-duration-single-form {
+          display: inline-block; 
+        }
+        .request-form-label {
+          text-align: right;
+          padding-right: 10px;
+          width: 20%;
+          align-items: top;
+        }
+        .request-duration-single-form {
+          overflow: hidden;
+          width: 79%;
+          margin: 10px 0px;
+          .nested-fields {
+            overflow: hidden;
+            width: 100%;
+            border-bottom: 1px solid #cccccc;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            .add-duration {
+              a:hover {
+                background: transparent;
+                text-decoration: none;
+              }
+            }
+            .duration-label, .duration-input {
+              display: inline-block;
+            }
+            .duration-label {
+              width: 14%;
+              text-align: left;
+            }
+            .duration-input {
+              width: 32%;
+              padding-right: 10px;
+              input {
+                width: 100%;
+                border: 1px solid #999999;
+                border-radius: 4px;
+                padding: 5px 15px;
+                background: #fff;
+              }
+            }
+            .duration-radio-input {
+              margin-top: 15px;
+              display: inline-block;
+              width: 80%;
+              label {
+                font-weight: normal;
+                margin-right: 10px;
+              }
+
+              input[type='radio'] {
+                width: 17px;
+                height: 17px;
+                margin-top: -1px;
+                vertical-align: middle;
+              }
+            }
+            a.delete-duration {
+              color: red;
+              font-size: 17px;
+              float: right;
+            }
+            a.delete-duration:hover {
+              background: transparent;
+              text-decoration: none;
+            }
+          } 
         }
       }
     }
