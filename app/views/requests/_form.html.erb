@@ -11,53 +11,56 @@
         </ul>
       </div>
     <% end %>
-
-    <div class="title">SEND A REQUEST<span id="close-request-form">X</span></div>
-    <div class="reviewer-cc">
-    	<div class="reviewer-cc-form">
-    		<div class="request-form-label"><%= f.label "To" %></div>
-    		<div class="request-form-input"><%= f.text_field :reviewer, class: "tag-box" %></div>
+    <div class="main-form">
+    	<div class="title">SEND A REQUEST</div>
+    	<div class="reviewer-cc">
+    		<div class="reviewer-cc-form">
+    			<div class="request-form-label"><%= f.label "To" %><span> *</span></div>
+    			<div class="request-form-input"><%= f.text_field :reviewer, class: "tag-box" %></div>
+    		</div>
+    		<div class="reviewer-cc-form">
+    			<div class="request-form-label"><%= f.label "CC" %></div>
+    			<div class="request-form-input"><%= f.text_field :ccer, class: "tag-box" %></div>
+    		</div>
+    		
     	</div>
-    	<div class="reviewer-cc-form">
-    		<div class="request-form-label"><%= f.label "CC" %></div>
-    		<div class="request-form-input"><%= f.text_field :ccer, class: "tag-box" %></div>
+    	<div class="request-type">
+    		<div class="request-form-label"><%= f.label :request_type %><span> *</span></div>
+    		<div class="request-form-select"><%= f.select :request_type, ["Leave", "WFH"] %></div>
     	</div>
-    	
-    </div>
-    <div class="request-type">
-    	<div class="request-form-label"><%= f.label :request_type %></div>
-    	<div class="request-form-select"><%= f.select :request_type, ["Leave", "WFH"] %></div>
-    </div>
-    <div class="duration-form">
-    	<div class="request-form-label" id="duration-form-label"><%= f.label "Date time" %></div>
-    	<div class="request-duration-single-form">
-    		<%= f.fields_for :durations, request.durations do |duration| %>
-    		  <%= render 'duration_fields', f: duration %>
-    		<% end %>
+    	<div class="duration-form">
+    		<div class="request-form-label" id="duration-form-label"><%= f.label "Date time" %><span> *</span></div>
     		<div class="request-duration-single-form">
-    			<%= link_to_add_association 'Add another date', f, :durations, class: "add" %>
+    			<%= f.fields_for :durations, request.durations do |duration| %>
+    			  <%= render 'duration_fields', f: duration %>
+    			<% end %>
+    			<div class="request-duration-single-form">
+    				<%= link_to_add_association 'Add another date', f, :durations, class: "add" %>
+    			</div>
+    		</div>
+    	</div>
+
+    	<div class="reason">
+    		<div class="request-form-label"><%= f.label :reason %><span> *</span></div>
+    		<div class="request-form-input"><%= f.text_area :reason, placeholder: "Enter the reason of your request...", size: "15x4" %></div>
+    	</div>
+
+    	<div class="btn-group">
+    		<div class="request-form-label"></div>
+    		<div class="request-form-input">
+    			<%= f.submit "Submit" %>
+    			<span class="close-request-form">Cancel</span>		
     		</div>
     	</div>
     </div>
+    <div class="x-form"><span class="close-request-form">X</span></div>
+    
 
-
-
-<!--     <div class="field">
-      <%#= f.label :status %>
-      <%#= f.select :status, ["Pending", "Approved", "Denied"] %>
-    </div> -->
-
-    </br>
-
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
   <% end %>
 </div>
 
 <script type="text/javascript">
-  $('#close-request-form').on('click', function(){
+  $('.close-request-form').on('click', function(){
   	$('.new-request-form').hide();
   });
   $( function() {
