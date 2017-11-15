@@ -5,7 +5,6 @@ class CreateRequests < ActiveRecord::Migration[5.0]
       t.string :ccer
       t.string :request_type
       t.text :reason
-      t.string :status
 
       t.timestamps
     end
