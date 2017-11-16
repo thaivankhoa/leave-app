@@ -1,4 +1,3 @@
-$('.new-request-form').hide();
 $('.new-request-form').html("<%=j render 'requests/form', request: @request %>");
 $('.new-request-form').show();
 
@@ -6,5 +5,12 @@ $(document).ready(function(){
     $('.request_date_picker').datepicker({ dateFormat: 'dd-mm-yy' });
     $('.new-edit-request').on('cocoon:after-insert', function(e, insertedItem) {
        return $('.request_date_picker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+    });
+    // $('.request-duration-single-form').on('cocoon:before-remove', function(e) {
+    //    console.log(e);	
+    // });
+
+    $('.delete-duration').on('click', function () {
+    	console.log('lol');
     });
 });

@@ -28,6 +28,10 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /requests
@@ -78,6 +82,6 @@ class RequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def request_params
-      params.require(:request).permit(:reviewer, :ccer, :request_type, :reason, :status, :user_id, durations_attributes: [:first_date, :last_date, :duration_type, :request_id, :_destroy])
+      params.require(:request).permit(:id, :reviewer, :ccer, :request_type, :reason, :status, :user_id, durations_attributes: [:id, :first_date, :last_date, :duration_type, :request_id, :_destroy])
     end
 end

@@ -14,6 +14,9 @@ class Request < ApplicationRecord
 
   accepts_nested_attributes_for :durations, allow_destroy: true
 
+  #validation
+  validates_presence_of :ccer, :request_type, :reason, :status, :user_id
+
   def total_duration
     durations.inject(0) { |sum, duration| sum + duration.total_duration}
   end

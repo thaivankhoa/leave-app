@@ -15,6 +15,13 @@
 .leave-info {
   border-bottom: 1px solid #edeeeb;
   padding: 10px 0px;
+  a:visited{
+    color: #a0a0a0;
+  }
+  a:hover {
+    background: transparent;
+    text-decoration: none;
+  }
   .leave-info-tab {
     display: inline-block;
     .title {

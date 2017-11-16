@@ -25,5 +25,5 @@
   <%= @request.status %>
 </p>
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Edit', edit_request_path(@request), remote: true %> |
 <%= link_to 'Back', requests_path %>

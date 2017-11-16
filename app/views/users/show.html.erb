@@ -30,12 +30,13 @@
           <th scope="col">Status</th>
           <th scope="col">Reviewer</th>
           <th scope="col">#</th>
+          <th scope="col">#</th>
 
         </tr>
       </thead>
       <tbody>
-      <% Request.all.each do |request| %>
-            <tr class="request-record" data-link="<%= request_path(request) %>" >
+      <% current_user.requests.each do |request| %>
+            <tr class="request-record" >
               <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
               <td><%= request.request_type %></td>
               <td><%= request.from_date.strftime("%b %d, %Y") %></td>
@@ -59,21 +60,22 @@
                   <% end %>
                 <% end %>
               </td>
+
+              <td class="delete-request">
+                <%= link_to edit_request_path(request), remote: true do %>
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                <% end %>
+              </td>
+
               <td class="delete-request">
                 <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 <% end %>
               </td>
+              
             </tr>
       <% end %>
       </tbody>
     </table>
   </div>
 </div>
-
-
-<script type="text/javascript">
-  $('.request-record').click(function() {
-    window.location =  $(this).data("link")
-  })
-</script>
