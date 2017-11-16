@@ -33,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-      <% current_user.requests.each do |request| %>
+      <% @user.requests.order(created_at: :desc).each do |request| %>
             <tr class="request-record" >
               <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
               <td><%= request.request_type %></td>
@@ -60,7 +60,7 @@
               </td>
 
               <td class="user-action-for-request">
-                <%= link_to request_path(request), class: "action view" do %>
+                <%= link_to request_path(request), class: "action view", remote: true do %>
                   <i class="fa fa-eye" aria-hidden="true"></i>
 
                 <% end %>

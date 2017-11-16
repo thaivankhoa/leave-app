@@ -1,0 +1,96 @@
+<div class="request-box">
+	<div class="request-detail">
+		<div class="main-form">
+			<div class="title">leave request on <%= @request.created_at.strftime("%b %d, %Y") %></div>
+			<div class="status-to-cc">
+				<div class="ele">
+					<div class="detail-label">Status</div>
+					<div class="detail-info">
+						<div class="request-status">
+						  <% if @request.status == "Pending" %>
+						    <span class="pending"><%= @request.status %></span>
+						  <% elsif @request.status == "Approved" %>
+						     <span class="approved"><%= @request.status %></span>
+						  <% else %>
+						     <span class="denied"><%= @request.status %></span>
+						  <% end %>
+						</div>
+					</div>
+				</div>
+				<div class="ele">
+					<div class="detail-label">To</div>
+					<div class="detail-info reviewers-ccers">
+						<% @request.reviewers.each do |reviewer| %>
+		                  <% if reviewer == @request.reviewers.last %>
+		                    <%= reviewer.name %>
+		                  <% else %>
+		                    <%= reviewer.name %>,
+		                  <% end %>
+		                <% end %>
+					</div>
+				</div>
+				<div class="ele">
+					<div class="detail-label">cc</div>
+					<div class="detail-info reviewers-ccers">
+						<% @request.cc_users.each do |ccer| %>
+		                  <% if ccer == @request.cc_users.last %>
+		                    <%= ccer.name %>
+		                  <% else %>
+		                    <%= ccer.name %>,
+		                  <% end %>
+		                <% end %>
+					</div>
+				</div>
+			</div>
+			<div class="request-detail-info">
+				<div class="ele">
+					<div class="detail-label">Request Type</div>
+					<div class="detail-info request-type">
+						<%= @request.request_type %>
+					</div>
+				</div>
+
+				<div class="ele">
+					<div class="detail-label request-date-time">Date Time</div>
+					<div class="detail-info ">
+						<% @request.durations.each do |duration| %>
+							<% if duration == @request.durations.last %>
+							<div class="duration-ele-last">
+								<div class="duration-date">
+									First date: <%= duration.first_date.strftime("%b %d, %Y") %> | Last date: <%= duration.last_date.strftime("%b %d, %Y") %>
+								</div>
+								<div class="duration-type">
+									<%= duration.duration_type %>
+								</div>
+							</div>
+							<% else %>
+							<div class="duration-ele">
+								<div class="duration-date">
+									First date: <%= duration.first_date.strftime("%b %d, %Y") %> | Last date: <%= duration.last_date.strftime("%b %d, %Y") %>
+								</div>
+								<div class="duration-type">
+									<%= duration.duration_type %>
+								</div>
+							</div>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+				<div class="ele">
+					<div class="detail-label">Reason</div>
+					<div class="detail-info request-reason">
+						<%= @request.reason %>
+					</div>
+				</div>
+				<%= link_to 'Edit', edit_request_path(@request), remote: true, class: "edit-in-show" %>
+			</div>
+		</div>
+		<div class="x-form"><span class="close-request-form">X</span></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+  $('.close-request-form').on('click', function(){
+  	$('.show-request').hide();
+  });
+</script>
