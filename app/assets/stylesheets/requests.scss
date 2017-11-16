@@ -9,7 +9,7 @@
   tbody {
     .request-record {
       td {
-
+        vertical-align: middle;
       }
       .request-status {
         color: white;
@@ -29,7 +29,20 @@
           background: #d35956;
         }
       }
-      .delete-request {
+      .user-action-for-request {
+        .action {
+          margin: 0px 4px;
+          font-size: 14px;
+        }
+        .view {
+          color: #56a656;
+        }
+        .edit {
+          color: #4d8bc0;
+        }
+        .delete {
+          color: #d35956;
+        }
         a:hover {
           background: transparent;
           text-decoration: none;

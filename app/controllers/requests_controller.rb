@@ -40,13 +40,13 @@ class RequestsController < ApplicationController
     @request.user = current_user
 
     if @request.save
-      # Add reviewers to request
+      # create review association
       reviewers = request_params[:reviewer].split(", ")
 
       reviewers.each do |reviewer|
         @request.reviewers << User.where(:name => reviewer).first
       end
-
+      # create cc association
       ccers = request_params[:ccer].split(", ")
 
       ccers.each do |ccer|
@@ -61,8 +61,31 @@ class RequestsController < ApplicationController
 
   # PATCH/PUT /requests/1
   def update
+    # clear the reviewers before update new association
+    @request.reviewers.each do |reviewer|
+      Permission.where(:user_id => reviewer.id, :request_id => @request.id).first.delete
+    end
+
+    #clear the ccers before update new association
+    @request.cc_users.each do |ccer|
+      Cc.where(:user_id => ccer.id, :request_id => @request.id).first.delete
+    end
+
     if @request.update(request_params)
-      redirect_to @request, notice: 'Request was successfully updated.'
+      # create review association
+      reviewers = request_params[:reviewer].split(", ")
+
+      reviewers.each do |reviewer|
+        @request.reviewers << User.where(:name => reviewer).first
+      end
+      # create cc association
+      ccers = request_params[:ccer].split(", ")
+
+      ccers.each do |ccer|
+        @request.cc_users << User.where(:name => ccer).first
+      end
+
+      redirect_to user_path(current_user), notice: 'Request was successfully updated.'
     else
       render :edit
     end

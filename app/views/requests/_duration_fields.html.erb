@@ -14,11 +14,9 @@
   </div>
   <div></div>
   <%= f.hidden_field :_destroy %> 
-  <!-- <a class="delete-duration remove_fields dynamic" href="#">
-    <i class="fa fa-trash-o" aria-hidden="true"></i>
-  </a> -->
-  
 
-  <%= link_to_remove_association "remove address", f , class: "delete-duration" %>
+  <%= link_to_remove_association f , class: "delete-duration" do %>
+    <i class="fa fa-trash-o" aria-hidden="true"></i>
+  <% end %>
 </div>
 

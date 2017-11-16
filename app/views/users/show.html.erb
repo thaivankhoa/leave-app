@@ -29,9 +29,7 @@
           <th scope="col">Duration</th>
           <th scope="col">Status</th>
           <th scope="col">Reviewer</th>
-          <th scope="col">#</th>
-          <th scope="col">#</th>
-
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -61,18 +59,18 @@
                 <% end %>
               </td>
 
-              <td class="delete-request">
-                <%= link_to edit_request_path(request), remote: true do %>
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                <% end %>
-              </td>
+              <td class="user-action-for-request">
+                <%= link_to request_path(request), class: "action view" do %>
+                  <i class="fa fa-eye" aria-hidden="true"></i>
 
-              <td class="delete-request">
-                <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <% end %>
+                <%= link_to edit_request_path(request), remote: true, class: "action edit" do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  
+                <% end %>
+                <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, class: "action delete" do %>
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 <% end %>
               </td>
-              
             </tr>
       <% end %>
       </tbody>
