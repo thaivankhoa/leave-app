@@ -1,6 +1,6 @@
 $('.show-request').hide();
 $('.new-request-form').html("<%=j render 'requests/form', request: @request %>");
-$('.new-request-form').show();
+$('.new-request-form').fadeIn(200);
 
 $(document).ready(function(){
     $('.request_date_picker').datepicker({ dateFormat: 'dd-mm-yy' });

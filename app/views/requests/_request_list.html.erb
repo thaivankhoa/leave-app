@@ -31,13 +31,16 @@
       <td class="user-action-for-request">
         <%= link_to request_path(request), class: "action view", remote: true do %>
           <i class="fa fa-eye" aria-hidden="true"></i>
-
         <% end %>
-        <%= link_to edit_request_path(request), remote: true, class: "action edit" do %>
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  
+        <% if user_can_edit_this_request?(request)  %>
+	        <%= link_to edit_request_path(request), remote: true, class: "action edit" do %>
+	          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  
+	        <% end %>
         <% end %>
-        <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, class: "action delete" do %>
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        <% if user_can_delete_this_request?(request)  %>
+	        <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, class: "action delete" do %>
+	          <i class="fa fa-trash-o" aria-hidden="true"></i>
+	        <% end %>
         <% end %>
       </td>
     </tr>

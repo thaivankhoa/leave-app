@@ -50,7 +50,7 @@ class RequestsController < ApplicationController
   def edit
     respond_to do |format|
       format.html
-      format.js
+      format.js { @current_item = @request }
     end
   end
 
@@ -106,7 +106,10 @@ class RequestsController < ApplicationController
         @request.cc_users << User.where(:name => ccer).first
       end
 
-      redirect_to user_path(current_user), notice: 'Request was successfully updated.'
+      # redirect_to user_path(current_user), notice: 'Request was successfully updated.'
+      respond_to do |format|
+        format.js { @current_item = @request }
+      end
     else
       render :edit
     end

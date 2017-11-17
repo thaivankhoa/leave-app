@@ -3,4 +3,7 @@ class StoresController < ApplicationController
   def index
   end
 
+  def company_dashboard
+  	@requests = Request.all
+  end
 end

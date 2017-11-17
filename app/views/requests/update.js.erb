@@ -1,0 +1,4 @@
+$('.new-request-form').hide();
+$('.request-list').html("<%=j render 'requests/request_list', requests: current_user.requests %>");
+$('#current_item').css({'background-color':'#b7d0e5'}).animate({'background-color':'#fff'}, 1500);
+console.log('a');

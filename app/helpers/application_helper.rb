@@ -23,4 +23,17 @@ module ApplicationHelper
   def format_datetime(date)
     date ? date.strftime("%Y-%m-%d %H:%M:%S") : ''
   end
+
+  def user_can_edit_this_request?(request)
+    current_user.role == "admin" || current_user == request.user 
+  end
+
+  def user_can_delete_this_request?(request)
+    current_user.role == "admin" || current_user == request.user 
+  end
+
+  def user_can_review_this_request?(request) 
+    request.reviewers.where(:user_code => current_user.user_code).count != 0
+  end
+
 end

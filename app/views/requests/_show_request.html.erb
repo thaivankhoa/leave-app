@@ -1,7 +1,7 @@
 <div class="request-box">
 	<div class="request-detail">
 		<div class="main-form">
-			<div class="title">leave request on <%= @request.created_at.strftime("%b %d, %Y") %></div>
+			<div class="title">leave request on <%= @request.created_at.strftime("%b %d, %Y") %> - <%= @request.user.name %></div>
 			<div class="status-to-cc">
 				<div class="ele">
 					<div class="detail-label">Status</div>
@@ -82,12 +82,17 @@
 						<%= @request.reason %>
 					</div>
 				</div>
+				<% if user_can_edit_this_request?(@request) %>
 				<%= link_to 'Edit', edit_request_path(@request), remote: true, class: "edit-in-show" %>
+				<% end %>
 			</div>
+
+			<% if user_can_review_this_request?(@request) %>
 			<div class="reviewer-box">
 				<%= button_to "Approved", approve_request_path(request), remote: true, method: :put, class: "approve" %>
 				<%= button_to "Deny", deny_request_path(request), remote: true, method: :put, class: "deny"  %>
 			</div>
+			<% end %>
 			<div class="discussion-box">
 				<div class="title">Discussion</div>
 				<button class="cmt-btn"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment

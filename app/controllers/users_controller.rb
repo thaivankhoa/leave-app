@@ -2,6 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :require_login
   # GET /users
+
+  def pending_requests
+    @requests = current_user.pending_requests
+  end
+
+  def cc_requests
+    @requests = current_user.cc_requests
+  end
+
   def index
     @users = User.all
   end
