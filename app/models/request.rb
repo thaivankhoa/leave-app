@@ -44,4 +44,9 @@ class Request < ApplicationRecord
   def deny_request
     update_attribute(:status, "Denied")
   end
+
+  def return_to_pending_state
+    update_attribute(:status, "Pending")
+  end
+
 end

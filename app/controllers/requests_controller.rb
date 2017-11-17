@@ -1,6 +1,26 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
+  #NEW ACTION
+
+  def deny
+    @request = Request.find(params[:id])
+    
+    respond_to do |format|
+      @request.deny_request
+      format.js { @current_item = @request }
+    end
+  end
+
+  def approve
+    @request = Request.find(params[:id])
+    
+    respond_to do |format|
+      @request.approve_request
+      format.js { @current_item = @request }
+    end
+  end
+
   # GET /requests
   def index
     @requests = Request.all
@@ -72,6 +92,7 @@ class RequestsController < ApplicationController
     end
 
     if @request.update(request_params)
+      @request.return_to_pending_state
       # create review association
       reviewers = request_params[:reviewer].split(", ")
 

@@ -32,8 +32,8 @@
           <th scope="col">#</th>
         </tr>
       </thead>
-      <tbody>
-      <%= render 'requests/request_list', requests: @user.requests  %>
+      <tbody class="request-list">
+        <%= render 'requests/request_list', requests: @user.requests  %>
       </tbody>
     </table>
   </div>

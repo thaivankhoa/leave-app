@@ -6,6 +6,16 @@
     <div class="title-tab">
       <%= link_to 'Company Board', users_path %>
     </div>
+    <div class="title-tab">
+      <%= link_to users_path do %>
+        Pending-Request (<%= current_user.pending_requests.count %>)
+      <% end %>
+    </div>
+    <div class="title-tab">
+      <%= link_to users_path do %>
+        CC-Request (<%= current_user.cc_requests.count %>)
+      <% end %>
+    </div>
     <div class="send-request">
       <%= link_to 'Send Request', new_request_path, remote: true %>
     </div>

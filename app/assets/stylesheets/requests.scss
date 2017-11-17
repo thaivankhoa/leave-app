@@ -7,6 +7,9 @@
     font-size: 20px;
   }
   tbody {
+    tr:nth-of-type(odd) {
+      background: #cce6ff;
+    }
     .request-record {
       td {
         vertical-align: middle;
@@ -455,6 +458,34 @@
             .request-date-time {
               vertical-align: top;
               padding-top: 10px;
+            }
+          }
+        }
+        .reviewer-box {
+          padding-top: 20px;
+          padding-left: 25%;
+          .button_to {
+            display: inline-block;
+            margin-right: 30px;
+            input {
+              border-radius: 5px;
+              padding: 10px 20px;
+              color: white;
+              font-weight: bold;
+            }
+            input:hover {
+              border: 1px solid black;
+              background: #fff;
+              color: black;
+            }
+            .approve {
+              border: 1px solid #6c996c;
+              background: #56a656;
+            }
+
+            .deny {
+              border: 1px solid #bd504d;
+              background: #d35956;
             }
           }
         }

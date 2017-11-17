@@ -1,5 +1,9 @@
 <% requests.order(created_at: :desc).each do |request| %>
-    <tr class="request-record" >
+	<% if request == @current_item %>
+	<tr class="request-record" id="current_item">
+	<% else %>
+	<tr class="request-record">
+	<% end %>
       <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
       <td><%= request.request_type %></td>
       <td><%= request.from_date.strftime("%b %d, %Y") %></td>

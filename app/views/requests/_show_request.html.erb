@@ -84,6 +84,10 @@
 				</div>
 				<%= link_to 'Edit', edit_request_path(@request), remote: true, class: "edit-in-show" %>
 			</div>
+			<div class="reviewer-box">
+				<%= button_to "Approved", approve_request_path(request), remote: true, method: :put, class: "approve" %>
+				<%= button_to "Deny", deny_request_path(request), remote: true, method: :put, class: "deny"  %>
+			</div>
 			<div class="discussion-box">
 				<div class="title">Discussion</div>
 				<button class="cmt-btn"><i class="fa fa-comment-o" aria-hidden="true"></i> Comment
