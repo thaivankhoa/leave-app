@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def balance_valid?(leave_duration)
-    (balance - leave_duration) > -5
+    (carried - taken - leave_duration) > -5
   end
 
   
