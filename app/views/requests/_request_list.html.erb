@@ -1,0 +1,40 @@
+<% requests.order(created_at: :desc).each do |request| %>
+    <tr class="request-record" >
+      <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
+      <td><%= request.request_type %></td>
+      <td><%= request.from_date.strftime("%b %d, %Y") %></td>
+      <td><%= request.to_date.strftime("%b %d, %Y") %></td>
+      <td><%= request.total_duration %> days</td>
+      <td class="request-status">
+        <% if request.status == "Pending" %>
+          <span class="pending"><%= request.status %></span>
+        <% elsif request.status == "Approved" %>
+           <span class="approved"><%= request.status %></span>
+        <% else %>
+           <span class="denied"><%= request.status %></span>
+        <% end %>
+      </td>
+      <td>
+        <% request.reviewers.each do |reviewer| %>
+          <% if reviewer == request.reviewers.last %>
+            <%= reviewer.name %>
+          <% else %>
+            <%= reviewer.name %>,
+          <% end %>
+        <% end %>
+      </td>
+
+      <td class="user-action-for-request">
+        <%= link_to request_path(request), class: "action view", remote: true do %>
+          <i class="fa fa-eye" aria-hidden="true"></i>
+
+        <% end %>
+        <%= link_to edit_request_path(request), remote: true, class: "action edit" do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  
+        <% end %>
+        <%= link_to request, method: :delete, data: { confirm: 'Are you sure?' }, class: "action delete" do %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        <% end %>
+      </td>
+    </tr>
+<% end %>

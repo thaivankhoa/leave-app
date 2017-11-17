@@ -36,4 +36,12 @@ class Request < ApplicationRecord
     end
     last_date_arr.max
   end
+
+  def approve_request
+    update_attribute(:status, "Approved")
+  end
+
+  def deny_request
+    update_attribute(:status, "Denied")
+  end
 end

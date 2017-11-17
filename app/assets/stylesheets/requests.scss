@@ -330,7 +330,7 @@
     .request-detail {
       background: white;
       overflow: auto;
-      width: 650px;
+      width: 600px;
       height: auto;
       margin: auto;
       padding: 7px 7px 20px 15px;
@@ -407,7 +407,7 @@
           }
         }
         .request-detail-info {
-          margin-top: 20px;
+          margin-top: 5px;
           overflow: hidden;
           border-bottom: 1px solid #cccccc;
           padding-bottom: 10px;
@@ -456,6 +456,27 @@
               vertical-align: top;
               padding-top: 10px;
             }
+          }
+        }
+        .discussion-box {
+          padding: 20px 0px;
+          .title {
+            float: left;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+            display: block;
+            width: 100%;
+          }
+          .cmt-btn {
+            border: none;
+            padding: 7px 20px;
+            border-radius: 5px;
+            background: #ccc;
+            color: black;
+            border: none;
+            display: block;
           }
         }
       }
