@@ -6,11 +6,11 @@
   <div class="leave-info">
     <div class="leave-info-tab leave-balance">
       <div class="title">LEAVE DAYS</div>
-      <div class="info"><span><%= current_user.taken %>/<%= current_user.carried%></span> DAYS</div>
+      <div class="info"><span><%= current_user.taken.round(2) %>/<%= current_user.carried%></span> DAYS</div>
     </div>
     <div class="leave-info-tab wfh-days">
       <div class="title">WFH DAYS</div>
-      <div class="info"><span><%= current_user.wfh_day %></span> DAYS</div>
+      <div class="info"><span><%= current_user.wfh_day.round(2) %></span> DAYS</div>
     </div>
   </div>
 
