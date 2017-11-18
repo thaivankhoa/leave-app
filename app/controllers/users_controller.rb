@@ -5,10 +5,18 @@ class UsersController < ApplicationController
 
   def pending_requests
     @requests = current_user.pending_requests
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def cc_requests
     @requests = current_user.cc_requests
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
@@ -17,6 +25,10 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /users/1/edit

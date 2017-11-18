@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   # one user have many request
-  has_many :requests
+  has_many :requests, dependent: :destroy
 
   # -- review relationship -- one user have many pending requests that need to review
   has_many :permissions

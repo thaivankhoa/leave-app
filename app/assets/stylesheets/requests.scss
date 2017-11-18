@@ -343,6 +343,11 @@
     height: 100%;
     background: rgba(0,0,0,0.7);
     padding: 5% 0px 20% 0px;
+    top: 0;
+    bottom:0;
+    position:fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
     .request-detail {
       background: white;
       overflow: auto;
@@ -393,6 +398,7 @@
               text-align: right;
               padding-right: 10px;
               font-weight: bold;
+
             }
             .detail-info {
               width: 75%;
@@ -451,6 +457,7 @@
               text-align: right;
               padding-right: 10px;
               font-weight: bold;
+              vertical-align: top;
             }
             .detail-info {
               width: 75%;

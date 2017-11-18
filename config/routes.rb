@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  root 'stores#index'
+  root 'stores#company_dashboard'
   get 'company-dashboard' => 'stores#company_dashboard'
 end

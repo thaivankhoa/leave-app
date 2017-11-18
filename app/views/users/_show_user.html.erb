@@ -1,0 +1,40 @@
+<div class="container-z">
+  <p id="notice"><%= notice %></p>
+
+  <div class="year"><%= Time.current.year %></div>
+
+  <div class="leave-info">
+    <div class="leave-info-tab leave-balance">
+      <div class="title">LEAVE DAYS</div>
+      <div class="info"><span><%= current_user.taken.round(2) %>/<%= current_user.carried%></span> DAYS</div>
+    </div>
+    <div class="leave-info-tab wfh-days">
+      <div class="title">WFH DAYS</div>
+      <div class="info"><span><%= current_user.wfh_day.round(2) %></span> DAYS</div>
+    </div>
+  </div>
+
+  <div class="user-leave-board">
+    <div class="board-title">
+      your leave / wfh report
+    </div>
+
+    <table class="table table-striped main-board">
+      <thead>
+        <tr>
+          <th scope="col">Request Date</th>
+          <th scope="col">Type</th>
+          <th scope="col">From Date</th>
+          <th scope="col">To Date</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Status</th>
+          <th scope="col">Reviewer</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody class="request-list">
+        <%= render 'requests/request_list', requests: @user.requests  %>
+      </tbody>
+    </table>
+  </div>
+</div>

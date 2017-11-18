@@ -68,10 +68,41 @@
 #nav-bar {
   background: #e7e7e7;
   border-bottom: 1px solid #cccccc;
+  .title-tab.active {
+    a {
+      color: #6666ff;
+    }
+    .arrow-up {
+      display: block;
+    }
+  }
   .title-tab {
     display: inline-block;
     padding: 15px 15px;
     font-size: 16px;
+    position: relative;
+    color: #666;
+    .arrow-up {
+      display: none;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 11px solid #cccccc;
+      position: absolute;
+      left: 80px;
+      top: 42px;
+      .inner-triangle {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 10px solid white;
+        left: -7px;
+        top: 1px;
+      }
+    }
     a:hover {
       background: transparent;
       text-decoration: none;
