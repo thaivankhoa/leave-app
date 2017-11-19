@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :require_login
-  before_filter :check_user_is_admin, only: [:index]
-  before_filter :permission_to_edit_user, only: [:edit]
+  before_filter :check_user_is_admin, only: [:index, :edit]
   # GET /users
 
   def pending_requests

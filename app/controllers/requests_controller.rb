@@ -68,24 +68,27 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     @request.user = current_user
+    if @request.user.balance_valid?(@request.total_duration)
+      if @request.save
+        # create review association
+        reviewers = request_params[:reviewer].split(", ")
 
-    if @request.save
-      # create review association
-      reviewers = request_params[:reviewer].split(", ")
+        reviewers.each do |reviewer|
+          @request.reviewers << User.where(:name => reviewer).first
+        end
+        # create cc association
+        ccers = request_params[:ccer].split(", ")
 
-      reviewers.each do |reviewer|
-        @request.reviewers << User.where(:name => reviewer).first
+        ccers.each do |ccer|
+          @request.cc_users << User.where(:name => ccer).first
+        end
+
+        redirect_to user_path(current_user), notice: 'Request was successfully created.'
+      else
+        render :new
       end
-      # create cc association
-      ccers = request_params[:ccer].split(", ")
-
-      ccers.each do |ccer|
-        @request.cc_users << User.where(:name => ccer).first
-      end
-
-      redirect_to user_path(current_user), notice: 'Request was successfully created.'
     else
-      render :new
+      redirect_to user_path(current_user), notice: "This request can't be created. Please check your balance."
     end
   end
 
@@ -101,27 +104,32 @@ class RequestsController < ApplicationController
       Cc.where(:user_id => ccer.id, :request_id => @request.id).first.delete
     end
 
-    if @request.update(request_params)
-      @request.return_to_pending_state
-      # create review association
-      reviewers = request_params[:reviewer].split(", ")
+    #check user's balance before update
+    if @request.user.balance_valid?(@request.total_duration)
+      if @request.update(request_params)
+        @request.return_to_pending_state
+        # create review association
+        reviewers = request_params[:reviewer].split(", ")
 
-      reviewers.each do |reviewer|
-        @request.reviewers << User.where(:name => reviewer).first
-      end
-      # create cc association
-      ccers = request_params[:ccer].split(", ")
+        reviewers.each do |reviewer|
+          @request.reviewers << User.where(:name => reviewer).first
+        end
+        # create cc association
+        ccers = request_params[:ccer].split(", ")
 
-      ccers.each do |ccer|
-        @request.cc_users << User.where(:name => ccer).first
-      end
+        ccers.each do |ccer|
+          @request.cc_users << User.where(:name => ccer).first
+        end
 
-      # redirect_to user_path(current_user), notice: 'Request was successfully updated.'
-      respond_to do |format|
-        format.js { @current_item = @request }
+        # redirect_to user_path(current_user), notice: 'Request was successfully updated.'
+        respond_to do |format|
+          format.js { @current_item = @request }
+        end
+      else
+        render :edit
       end
     else
-      render :edit
+      redirect_to user_path(current_user), notice: "This request can't be updated. Please check your balance."
     end
   end
 

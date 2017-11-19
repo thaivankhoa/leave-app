@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :durations
   resources :requests do
   	member do
   		put 'deny'

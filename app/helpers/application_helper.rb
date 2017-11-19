@@ -14,13 +14,6 @@ module ApplicationHelper
       end
   end
 
-  def permission_to_edit_user
-    unless current_user.id == params[:id] || current_user_is_admin?
-      flash[:notice] = "Sorry, you don't have permisson to do this "
-      redirect_to root_url
-    end
-  end
-
   def format_date(date)
     date ? date.strftime("%Y-%m-%d") : ''
   end
