@@ -4,7 +4,7 @@
 #header {
   padding: 10px 0px 15px 0px;
   display: block;
-  background-color: #3434a3;
+  background-color: #4e69a2;
   height: auto;
   a:hover {
     background: transparent;
@@ -66,11 +66,11 @@
 //navigation
 
 #nav-bar {
-  background: #e7e7e7;
+  background: #f7f7f7;
   border-bottom: 1px solid #cccccc;
   .title-tab.active {
     a {
-      color: #6666ff;
+      color: #6666ff !important;
     }
     .arrow-up {
       display: block;
@@ -82,6 +82,9 @@
     font-size: 16px;
     position: relative;
     color: #666;
+    a {
+      color: #666;
+    }
     .arrow-up {
       display: none;
       width: 0;
@@ -113,8 +116,8 @@
     margin: 10px 20px;
     padding: 5px 20px;
     float: right;
-    background: #4d8bc0;
-    border: 1px solid #1b6aae;
+    background: #4e69a2;
+    border: 1px solid #435a8b;
     border-radius: 5px;
     color: white;
     a {
@@ -122,7 +125,7 @@
     }
   }
   .send-request:hover {
-    background: #1b6aae;
+    background: #8b9dc3;
     a {
       text-decoration: none;
       background: transparent;

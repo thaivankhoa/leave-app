@@ -1,5 +1,12 @@
 <div class="container-z">
-  <p id="notice"><%= notice %></p>
+  <% if flash[:notice] %>
+  <div class="dialog-box">
+    <p id="notice"><%= notice %></p>
+    <div class="ok">
+      <button type="button">Accept</button>
+    </div>
+  </div>
+  <% end %>
 
   <div class="year"><%= Time.current.year %></div>
 

@@ -13,3 +13,51 @@ body, html {
     width: 90%;
     margin: auto;
 }
+#notice {
+	color: red;
+	border: none;
+	color: #444 !important;
+	padding: 10px;
+	margin: 0px !important;
+}
+	
+.dialog-box {
+	border: 4px solid #8e8e8e;
+	border-radius: 4px;
+	width: 30%;
+	height: auto;
+	position: absolute;
+	top: 20%;
+	left: 35%;
+	z-index: 10;
+	background: white;
+	.ok {
+		background: #f7f7f7;
+		border-top: 1px solid #ccc;
+		padding: 7px 10px;
+		text-align: right;
+		button {
+			/*background-color: #3b5998;*/
+			background: #4e69a2;
+			color: white;
+			padding: 2px 8px;
+			border: 1px solid #435a8b;
+			font-family: 'Roboto';
+			font-weight: bold;
+			font-size: 13px;
+		}
+		button:hover {
+			background: #8b9dc3;
+		}
+	}
+}
+
+.dialog-box:before {
+	content: "Leave Management App";
+	font-family: 'Roboto', Sans-serif;
+	padding: 5px 10px;
+	color: white;
+	display: block;
+	background: #7d8daf;
+	border: none;
+}
