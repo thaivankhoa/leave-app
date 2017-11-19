@@ -14,17 +14,19 @@ class RequestsController < ApplicationController
 
   def approve
     @request = Request.find(params[:id])
-    #update taken or wfh_days of user
-    if @request.request_type == "WFH"
-      @request.user.update_wfh_days(@request.total_duration)
-    else
-      @request.user.update_taken_days(@request.total_duration)
-    end
-
-    #update balance
-
-    @request.user.update_balance
+    #check balance before approve request
     if @request.user.balance_valid?(@request.total_duration)
+      #update taken or wfh_days of user
+      if @request.request_type == "WFH"
+        @request.user.update_wfh_days(@request.total_duration)
+      else
+        @request.user.update_taken_days(@request.total_duration)
+      end
+
+      #update balance
+
+      @request.user.update_balance
+
       respond_to do |format|
         @request.approve_request
         format.js { @current_item = @request }

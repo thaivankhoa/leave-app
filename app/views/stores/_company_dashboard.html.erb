@@ -67,7 +67,11 @@
             <td><%= request.user.name %></td>
             <td><%= request.from_date.strftime("%b %d, %Y") %></td>
             <td><%= request.to_date.strftime("%b %d, %Y") %></td>
+            <% if request.user.balance_valid?(request.total_duration) %>
             <td><%= request.total_duration %> days</td>
+            <% else %>
+            <td class="balance-invalid"><%= request.total_duration %> days</td>
+            <% end %>
             <td class="request-status">
               <% if request.status == "Pending" %>
                 <span class="pending"><%= request.status %></span>
