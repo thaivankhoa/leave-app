@@ -44,6 +44,7 @@
         <tr>
           <th scope="col">Request Date</th>
           <th scope="col">Type</th>
+          <th scope="col">Employee</th>
           <th scope="col">From Date</th>
           <th scope="col">To Date</th>
           <th scope="col">Duration</th>
@@ -53,8 +54,14 @@
         </tr>
       </thead>
       <tbody class="request-list">
-        <%= render 'requests/request_list', requests: current_user.pending_requests  %>
+        <%= render 'requests/request_list_2', requests: current_user.pending_requests  %>
       </tbody>
     </table>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('.dialog-box .ok button').on('click', function() {
+     $('.dialog-box').fadeOut();
+   });
+</script>

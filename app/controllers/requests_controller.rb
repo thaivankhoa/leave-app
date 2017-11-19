@@ -24,10 +24,13 @@ class RequestsController < ApplicationController
     #update balance
 
     @request.user.update_balance
-    
-    respond_to do |format|
-      @request.approve_request
-      format.js { @current_item = @request }
+    if @request.user.balance_valid?(@request.total_duration)
+      respond_to do |format|
+        @request.approve_request
+        format.js { @current_item = @request }
+      end
+    else
+      redirect_to pending_requests_user_path(current_user), notice: "This request can't be approved because of this user's balance."
     end
   end
 
@@ -94,18 +97,18 @@ class RequestsController < ApplicationController
 
   # PATCH/PUT /requests/1
   def update
-    # clear the reviewers before update new association
-    @request.reviewers.each do |reviewer|
-      Permission.where(:user_id => reviewer.id, :request_id => @request.id).first.delete
-    end
+      # clear the reviewers before update new association
+      @request.reviewers.each do |reviewer|
+        Permission.where(:user_id => reviewer.id, :request_id => @request.id).first.delete
+      end
 
-    #clear the ccers before update new association
-    @request.cc_users.each do |ccer|
-      Cc.where(:user_id => ccer.id, :request_id => @request.id).first.delete
-    end
+      #clear the ccers before update new association
+      @request.cc_users.each do |ccer|
+        Cc.where(:user_id => ccer.id, :request_id => @request.id).first.delete
+      end
 
-    #check user's balance before update
-    if @request.user.balance_valid?(@request.total_duration)
+      #check user's balance before update
+    
       if @request.update(request_params)
         @request.return_to_pending_state
         # create review association
@@ -128,9 +131,6 @@ class RequestsController < ApplicationController
       else
         render :edit
       end
-    else
-      redirect_to user_path(current_user), notice: "This request can't be updated. Please check your balance."
-    end
   end
 
   # DELETE /requests/1

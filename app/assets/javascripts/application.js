@@ -17,3 +17,7 @@
 //= require cocoon
 
 //= require_tree .
+
+$('.dialog-box .ok button').on('click', function() {
+ $('.dialog-box').fadeOut();
+});

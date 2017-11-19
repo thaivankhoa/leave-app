@@ -19,6 +19,9 @@
       background: #cce6ff;
     }
     .request-record {
+      .balance-invalid {
+        color: red;
+      }
       td {
         font-size: 13px;
         vertical-align: middle;

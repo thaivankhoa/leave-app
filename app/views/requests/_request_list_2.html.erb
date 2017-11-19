@@ -6,6 +6,7 @@
 	<% end %>
       <td style="color: #6666ff; font-weight: 600;"><%= request.created_at.strftime("%b %d, %Y") %></td>
       <td><%= request.request_type %></td>
+      <td><%= request.user.name %></td>
       <td><%= request.from_date.strftime("%b %d, %Y") %></td>
       <td><%= request.to_date.strftime("%b %d, %Y") %></td>
       <% if request.user.balance_valid?(request.total_duration) %>
