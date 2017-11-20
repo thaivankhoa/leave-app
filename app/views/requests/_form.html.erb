@@ -16,11 +16,11 @@
     	<div class="reviewer-cc">
     		<div class="reviewer-cc-form">
     			<div class="request-form-label"><%= f.label "To" %><span> *</span></div>
-    			<div class="request-form-input"><%= f.text_field :reviewer, class: "tag-box" %></div>
+    			<div class="request-form-input"><%= f.text_field :reviewer, class: "tag-box", placeholder: "Name of the person that will review your request..." %></div>
     		</div>
     		<div class="reviewer-cc-form">
     			<div class="request-form-label"><%= f.label "CC" %></div>
-    			<div class="request-form-input"><%= f.text_field :ccer, class: "tag-box" %></div>
+    			<div class="request-form-input"><%= f.text_field :ccer, class: "tag-box", placeholder: "Name of the person that you want to inform your request..." %></div>
     		</div>
     		
     	</div>

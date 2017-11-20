@@ -86,12 +86,13 @@
 				<%= link_to 'Edit', edit_request_path(@request), remote: true, class: "edit-in-show" %>
 				<% end %>
 			</div>
-
+			<% unless @request.reviewed_request? %>
 			<% if user_can_review_this_request?(@request) %>
 			<div class="reviewer-box">
 				<%= button_to "Approved", approve_request_path(request), remote: true, method: :put, class: "approve" %>
 				<%= button_to "Deny", deny_request_path(request), remote: true, method: :put, class: "deny"  %>
 			</div>
+			<% end %>
 			<% end %>
 			<div class="discussion-box">
 				<div class="title">Discussion</div>

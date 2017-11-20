@@ -54,7 +54,7 @@
         </tr>
       </thead>
       <tbody class="request-list">
-        <%= render 'requests/request_list_2', requests: current_user.cc_requests  %>
+        <%= render 'requests/request_list_2', requests: current_user.cc_requests.order(status: :desc, created_at: :desc) %>
       </tbody>
     </table>
   </div>

@@ -49,4 +49,7 @@ class Request < ApplicationRecord
     update_attribute(:status, "Pending")
   end
 
+  def reviewed_request?
+    status != "Pending"
+  end
 end

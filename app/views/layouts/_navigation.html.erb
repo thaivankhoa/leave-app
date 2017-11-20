@@ -1,11 +1,5 @@
 <div id="nav-bar">
   <div class="container-z">
-    <div class="title-tab">
-      <div class="arrow-up">
-        <div class="inner-triangle"></div>
-      </div>
-      <%= link_to 'User Dashboard', user_path(current_user), remote: true %>
-    </div>
     <div class="title-tab active">
       <div class="arrow-up">
         <div class="inner-triangle"></div>
@@ -16,8 +10,14 @@
       <div class="arrow-up">
         <div class="inner-triangle"></div>
       </div>
+      <%= link_to 'Your Dashboard', user_path(current_user), remote: true %>
+    </div>
+    <div class="title-tab">
+      <div class="arrow-up">
+        <div class="inner-triangle"></div>
+      </div>
       <%= link_to pending_requests_user_path(current_user), remote: true do %>
-        Pending-Request (<%= current_user.pending_requests.count %>)
+        Pending Request <div class="notify"><%= current_user.pending_requests.where(:status => "Pending").count %></div>
       <% end %>
     </div>
     <div class="title-tab">
@@ -25,7 +25,7 @@
         <div class="inner-triangle"></div>
       </div>
       <%= link_to cc_requests_user_path(current_user), remote: true do %>
-        CC-Request (<%= current_user.cc_requests.count %>)
+        CC'd Request <div class="notify"><%= current_user.cc_requests.where(:status => "Pending").count %></div>
       <% end %>
     </div>
     <div class="send-request">

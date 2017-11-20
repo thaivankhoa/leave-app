@@ -1,3 +1,4 @@
 $('.show-request').fadeOut(500)
 $('.request-list').html("<%=j render 'requests/request_list_2', requests: current_user.pending_requests %>");
 $('#current_item').css({'background-color':'#9fcc9f'}).animate({'background-color':'#fff'}, 1500);
+$('.main-nav-bar').html("<%=j render 'layouts/navigation' %>");
